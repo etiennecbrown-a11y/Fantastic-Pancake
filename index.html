@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étienne Brown — Philosophy</title>
+    <meta name="description" content="Étienne Brown is an Associate Professor of Philosophy at the University of Ottawa, specializing in political philosophy, ethics, and the philosophy of technology.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-ink: #1a1a1a;
+            --color-paper: #faf9f7;
+            --color-accent: #8b4513;
+            --color-muted: #6b6b6b;
+            --color-border: #e0ddd8;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--color-ink);
+            background-color: var(--color-paper);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-paper);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--color-ink);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Language toggle */
+        .lang-toggle {
+            position: absolute;
+            right: 0;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            background: transparent;
+            border: 1px solid var(--color-border);
+            padding: 0.3rem 0.7rem;
+            cursor: pointer;
+            color: var(--color-muted);
+            transition: all 0.2s ease;
+            border-radius: 2px;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* Main content */
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        /* Header / About */
+        .about {
+            padding-top: 2rem;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.3rem;
+            line-height: 1.1;
+        }
+
+        .title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--color-muted);
+            margin-bottom: 2rem;
+        }
+
+        .bio {
+            margin-bottom: 1.5rem;
+        }
+
+        .bio a {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .bio a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        /* Section headings */
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-muted);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        h3:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Publications */
+        .publication {
+            margin-bottom: 1.3rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .publication::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 4px;
+            height: 4px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .publication a {
+            color: var(--color-ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-border);
+            transition: border-color 0.2s ease;
+        }
+
+        .publication a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .publication em {
+            color: var(--color-muted);
+        }
+
+        .publication .year {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+        }
+
+        .publication .coauthor {
+            font-size: 0.9rem;
+            color: var(--color-muted);
+        }
+
+        /* Teaching */
+        .course-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .course {
+            margin-bottom: 0.6rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .course::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--color-muted);
+        }
+
+        .course-level {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+        }
+
+        /* Contact */
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info a {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--color-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* Language visibility */
+        .lang-fr { display: none; }
+        html[lang="fr"] .lang-en { display: none; }
+        html[lang="fr"] .lang-fr { display: block; }
+        html[lang="fr"] span.lang-fr { display: inline; }
+        html[lang="fr"] span.lang-en { display: none; }
+        span.lang-fr { display: none; }
+        span.lang-en { display: inline; }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .lang-toggle {
+                position: static;
+            }
+
+            nav ul {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.95rem;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            main {
+                padding: 8rem 1.5rem 3rem;
+            }
+        }
+
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <ul>
+                <li><a href="#about"><span class="lang-en">About</span><span class="lang-fr">À propos</span></a></li>
+                <li><a href="#publications"><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></a></li>
+                <li><a href="#teaching"><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></a></li>
+                <li><a href="#contact"><span class="lang-en">Contact</span><span class="lang-fr">Contact</span></a></li>
+            </ul>
+            <button class="lang-toggle" onclick="toggleLanguage()">
+                <span class="lang-en">FR</span><span class="lang-fr">EN</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about" class="about">
+            <h1>Étienne Brown</h1>
+            <p class="title">
+                <span class="lang-en">Associate Professor, Department of Philosophy, University of Ottawa</span>
+                <span class="lang-fr">Professeur agrégé, Département de philosophie, Université d'Ottawa</span>
+            </p>
+            <p class="bio lang-en">
+                My work sits at the intersection of political philosophy, ethics, and the philosophy of technology, with a current focus on the normative implications of platform policy and the digital public sphere. I investigate the philosophical foundations of content moderation policy and algorithmic curation, the democratic implications of online speech governance, and increasingly, the ethical challenges posed by large language models.
+            </p>
+            <p class="bio lang-en">
+                I am the founder and co-organizer of <a href="https://philmod.org" target="_blank">PhilMod.org</a>, a community of academic researchers and technology professionals interested in the ethics of social media platform policy.
+            </p>
+            <p class="bio lang-en">
+                I received my Ph.D. from the Université Paris-Sorbonne and held postdoctoral fellowships at the Oxford Uehiro Centre for Practical Ethics and the Centre de recherche en éthique at the Université de Montréal. Before joining the University of Ottawa, I was Associate Professor at San José State University, in California.
+            </p>
+            <p class="bio lang-fr">
+                Mes recherches se situent à l'intersection de la philosophie politique, de l'éthique et de la philosophie de la technologie. Je m'intéresse actuellement aux implications normatives des politiques des plateformes numériques et de la sphère publique en ligne. J'étudie les fondements philosophiques de la modération de contenu et de la curation algorithmique, les implications démocratiques de la gouvernance de l'expression en ligne, et de plus en plus, les défis éthiques et politiques posés par les grands modèles de langage.
+            </p>
+            <p class="bio lang-fr">
+                Je suis le fondateur et co-organisateur de <a href="https://philmod.org" target="_blank">PhilMod.org</a>, une communauté de chercheurs universitaires et de professionnels de la technologie intéressés par l'éthique des politiques des plateformes de médias sociaux.
+            </p>
+            <p class="bio lang-fr">
+                J'ai obtenu mon doctorat à l'Université Paris-Sorbonne et j'ai effectué des stages postdoctoraux à l'Oxford Uehiro Centre for Practical Ethics et au Centre de recherche en éthique de l'Université de Montréal. Avant de rejoindre l'Université d'Ottawa, j'étais professeur agrégé à la San José State University, en Californie.
+            </p>
+        </section>
+
+        <section id="publications">
+            <h2><span class="lang-en">Publications</span><span class="lang-fr">Publications</span></h2>
+            
+            <h3><span class="lang-en">Books</span><span class="lang-fr">Livres</span></h3>
+            <div class="publication">
+                <em>Moral Judgement: An Introduction Through Anglo-American, German and French Philosophy</em>. London: Rowman & Littlefield International <span class="year">(2022)</span>
+            </div>
+            <div class="publication">
+                Mark Satta, Étienne Brown, and J.P. Messina (Eds.), <em>Philosophy of Free Speech: An Introduction</em>. London: Routledge <span class="year">(Forthcoming)</span>
+            </div>
+            <div class="publication">
+                Alain Renaut, Étienne Brown, Marie-Pauline Chartron, and Geoffroy Lauvau (Eds.), <em>Inégalités entre globalisation et particularisation</em>. Paris: Presses de l'Université Paris-Sorbonne <span class="year">(2016)</span>
+            </div>
+
+            <h3><span class="lang-en">Journal Articles</span><span class="lang-fr">Articles</span></h3>
+            <div class="publication">
+                <a href="https://philpapers.org/rec/BRODNR-7">Democracy Needs Reach: Political Equality, Online Speech, and Algorithmic Recommendation</a>. <em>Ethical Theory and Moral Practice</em> <span class="year">(Forthcoming)</span>
+            </div>
+            <div class="publication">
+                <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9036574F37705334A97932BC309AC53C/S2053447725100092a.pdf/recommended-selves-authenticity-and-algorithmic-filtering.pdf">Recommended Selves: Authenticity and Algorithmic Filtering</a>. <em>Journal of the American Philosophical Association</em> <span class="year">(2025)</span>
+            </div>
+            <div class="publication">
+                <a href="https://link.springer.com/article/10.1007/s44204-025-00300-z">Santa, Socials, and Secrets: Hard Cases for Epistemic Rights</a>. <em>Asian Journal of Philosophy</em> 4(74) <span class="year">(2025)</span> <span class="coauthor"><span class="lang-en">with</span><span class="lang-fr">avec</span> Rebecca Chan</span>
+            </div>
+            <div class="publication">
+                Free Speech and the Legal Prohibition of Fake News. <em>Social Theory & Practice</em> 49(1): 29-55 <span class="year">(2023)</span>
+            </div>
+            <div class="publication">
+                Disagreement, Epistemic Paralysis and the Legitimacy of Technocracy. <em>Critical Review</em> 32(1-3): 62-84 <span class="year">(2020)</span> <span class="coauthor"><span class="lang-en">with</span><span class="lang-fr">avec</span> Zoe Phillips Williams</span>
+            </div>
+            <div class="publication">
+                Kant's Doctrine of the Highest Good: A Theologico-Political Interpretation. <em>Kantian Review</em> 25(2): 193-217 <span class="year">(2020)</span>
+            </div>
+            <div class="publication">
+                Political Liberalism and the False Neutrality Objection. <em>Critical Review of International Social and Political Philosophy</em> 23(7): 874-893 <span class="year">(2020)</span>
+            </div>
+            <div class="publication">
+                'Fake News' and Conceptual Ethics. <em>Journal of Ethics and Social Philosophy</em> 16(2): 144-154 <span class="year">(2019)</span>
+            </div>
+            <div class="publication">
+                Propaganda, Misinformation and the Epistemic Value of Democracy. <em>Critical Review</em> 30(3-4): 194-218 <span class="year">(2018)</span>
+            </div>
+            <div class="publication">
+                Kantian Constructivism and the Normativity of Practical Identities. <em>Dialogue: Canadian Philosophical Review</em> 57(3): 571-590 <span class="year">(2018)</span>
+            </div>
+            <div class="publication">
+                Aristotelian Virtue Ethics and the Normativity Challenge. <em>Dialogue: Canadian Philosophical Review</em> 55(1): 131-150 <span class="year">(2016)</span>
+            </div>
+            <div class="publication">
+                Les inégalités ethnoculturelles après les théories de la justice. <em>Revue de métaphysique et de morale</em> 91: 377-398 <span class="year">(2016)</span> <span class="coauthor"><span class="lang-en">with</span><span class="lang-fr">avec</span> A. Renaut, G. Lauvau <span class="lang-en">and</span><span class="lang-fr">et</span> M.-P. Chartron</span>
+            </div>
+
+            <h3><span class="lang-en">Book Chapters</span><span class="lang-fr">Chapitres de livres</span></h3>
+            <div class="publication">
+                Speaking Through Algorithms: Free Speech and Artificial Intelligence from a Philosophical Perspective. In M. Satta, É. Brown, and J.P. Messina, <em>Philosophy of Free Speech: An Introduction</em>. London: Routledge <span class="year">(Forthcoming)</span>
+            </div>
+            <div class="publication">
+                <a href="https://philpapers.org/rec/BROTAS-17">Trust and Safety as Philosophical Practice</a>. In M. L. Daniel et al. (Eds.), <em>Trust, Safety and the Internet We Share</em>. London: Routledge <span class="year">(2026)</span> <span class="coauthor"><span class="lang-en">with</span><span class="lang-fr">avec</span> Zoe Phillips Williams</span>
+            </div>
+            <div class="publication">
+                <a href="https://www.taylorfrancis.com/chapters/edit/10.4324/9781003134749-32/reason-anything-étienne-brown">The Only Reason to Do Anything: Online Trolling as the Deceptive Disruption of Joint Action</a>. In C. Fox and J. Saunders, <em>Routledge Handbook of Philosophy and Media Ethics</em> <span class="year">(2024)</span>
+            </div>
+            <div class="publication">
+                Faire mienne la loi: remarques sur l'idéalisme métaéthique d'Alain Renaut. In G. Lauvau and L. K. Sosoe, <em>Trajectoire de l'humanisme moderne</em>. Paris: L'Harmattan <span class="year">(2023)</span>
+            </div>
+            <div class="publication">
+                Regulating the Spread of Online Misinformation. In M. Hannon and J. de Ridder, <em>Routledge Handbook of Political Epistemology</em> <span class="year">(2021)</span>
+            </div>
+            <div class="publication">
+                Civic Education in the Post-Truth Era: Intellectual Virtues and the Epistemic Threats of Social Media. In C. Macleod and C. Tappolet, <em>Philosophical Perspectives on Moral and Civic Education</em>. London: Routledge <span class="year">(2019)</span>
+            </div>
+            <div class="publication">
+                Émotions négatives et justice sociale. In P. Savidan, <em>Dictionnaire des inégalités et de la justice sociale</em>. Paris: PUF <span class="year">(2018)</span> <span class="coauthor"><span class="lang-en">with</span><span class="lang-fr">avec</span> C. Tappolet</span>
+            </div>
+            <div class="publication">
+                Justice ethnoculturelle et autodétermination: le cas des Autochtones du Canada. In A. Renaut et al., <em>Inégalités entre globalisation et particularisation</em>. Paris: PUPS <span class="year">(2016)</span>
+            </div>
+            <div class="publication">
+                Une justice au-delà des tribunaux? Finalités et enjeux des Commissions vérité et réconciliation. In K. Andrieu and G. Lauvau, <em>Quelle justice pour les peuples en transition?</em> Paris: PUPS <span class="year">(2014)</span>
+            </div>
+
+            <h3><span class="lang-en">Selected Public Engagement</span><span class="lang-fr">Interventions publiques (sélection)</span></h3>
+            <div class="publication">
+                <a href="https://blog.apaonline.org/2025/08/26/the-democratic-perils-of-hidden-moderation/">The Democratic Perils of Hidden Moderation</a>. <em>APA Research Blog</em> <span class="year">(2025)</span>
+            </div>
+            <div class="publication">
+                <a href="https://www.ledevoir.com/opinion/idees/831775/idees-facebook-instagram-haine-coulera-bientot-comme-long-fleuve-tranquille">Sur Facebook et Instagram, la haine coulera bientôt comme un long fleuve tranquille</a>. <em>Le Devoir</em> <span class="year">(2025)</span>
+            </div>
+            <div class="publication">
+                <a href="https://www.ledevoir.com/opinion/idees/787454/idees-la-silicon-valley-a-besoin-d-un-organisme-de-reglementation-independant">La Silicon Valley a besoin d'un organisme de réglementation indépendant</a>. <em>Le Devoir</em> <span class="year">(2023)</span>
+            </div>
+            <div class="publication">
+                <a href="https://www.newsweek.com/alternatives-facebook-taking-big-out-big-tech-opinion-1684348">Alternatives to Facebook: Taking the 'Big' Out of 'Big Tech'</a>. <em>Newsweek</em> <span class="year">(2022)</span>
+            </div>
+            <div class="publication">
+                <a href="https://www.thestar.com/opinion/contributors/2021/11/19/facebook-is-creating-a-new-digital-divide.html">Facebook is Creating a New Digital Divide</a>. <em>Toronto Star</em> <span class="year">(2021)</span>
+            </div>
+        </section>
+
+        <section id="teaching">
+            <h2><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></h2>
+            
+            <h3><span class="lang-en">Current Courses — University of Ottawa (2025–2026)</span><span class="lang-fr">Cours actuels — Université d'Ottawa (2025–2026)</span></h3>
+            <div class="course-group">
+                <div class="course">Théories françaises de la démocratie <span class="course-level">(<span class="lang-en">Graduate</span><span class="lang-fr">Cycles supérieurs</span>)</span></div>
+                <div class="course">Théories éthiques contemporaines <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+                <div class="course">Problems in Contemporary Political Philosophy: Political Freedom <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+            </div>
+
+            <h3><span class="lang-en">University of Ottawa</span><span class="lang-fr">Université d'Ottawa</span></h3>
+            <div class="course-group">
+                <div class="course">Political Philosophy of AI and Information Technologies <span class="course-level">(<span class="lang-en">Graduate</span><span class="lang-fr">Cycles supérieurs</span>)</span></div>
+                <div class="course">Éthique <span class="course-level">(<span class="lang-en">Undergraduate</span><span class="lang-fr">Premier cycle</span>)</span></div>
+                <div class="course">Political Philosophy <span class="course-level">(<span class="lang-en">Undergraduate</span><span class="lang-fr">Premier cycle</span>)</span></div>
+                <div class="course">Philosophie politique contemporaine <span class="course-level">(<span class="lang-en">Undergraduate</span><span class="lang-fr">Premier cycle</span>)</span></div>
+            </div>
+
+            <h3>San José State University</h3>
+            <div class="course-group">
+                <div class="course">Ethics of Artificial Intelligence <span class="course-level">(<span class="lang-en">Graduate</span><span class="lang-fr">Cycles supérieurs</span>)</span></div>
+                <div class="course">Political Epistemology <span class="course-level">(<span class="lang-en">Graduate</span><span class="lang-fr">Cycles supérieurs</span>)</span></div>
+                <div class="course">Philosophy Graduate Pro-Seminar <span class="course-level">(<span class="lang-en">Graduate</span><span class="lang-fr">Cycles supérieurs</span>)</span></div>
+                <div class="course">Seminar in Philosophy of Law: Political Freedom <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+                <div class="course">Seminar in Philosophy of Law: Democratic Theory <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+                <div class="course">Seminar in Philosophy of Law: Freedom of Expression <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+                <div class="course">Philosophy of Law <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+                <div class="course">Computers, Ethics and Society <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+                <div class="course">Science, Technology and Human Values <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+                <div class="course">Modern Philosophy <span class="course-level">(<span class="lang-en">Lower-Division</span><span class="lang-fr">Premier cycle</span>)</span></div>
+            </div>
+
+            <h3>Université de Montréal</h3>
+            <div class="course-group">
+                <div class="course">Philosophie du droit <span class="course-level">(<span class="lang-en">Upper-Division</span><span class="lang-fr">Premier cycle avancé</span>)</span></div>
+            </div>
+
+            <h3>Université Paris-Sorbonne</h3>
+            <div class="course-group">
+                <div class="course">Philosophie politique contemporaine <span class="course-level">(<span class="lang-en">Undergraduate</span><span class="lang-fr">Premier cycle</span>)</span></div>
+                <div class="course">Histoire de la pensée politique <span class="course-level">(<span class="lang-en">Undergraduate</span><span class="lang-fr">Premier cycle</span>)</span></div>
+                <div class="course">Méthodologie et pensée critique <span class="course-level">(<span class="lang-en">Undergraduate</span><span class="lang-fr">Premier cycle</span>)</span></div>
+            </div>
+
+            <h3><span class="lang-en">Université Panthéon-Assas (Law School)</span><span class="lang-fr">Université Panthéon-Assas (Faculté de droit)</span></h3>
+            <div class="course-group">
+                <div class="course">Culture générale <span class="course-level">(<span class="lang-en">Graduate</span><span class="lang-fr">Cycles supérieurs</span>)</span></div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p><strong><span class="lang-en">Email</span><span class="lang-fr">Courriel</span>:</strong> <a href="mailto:ebrow2@uottawa.ca">ebrow2@uottawa.ca</a></p>
+                <p><strong>Bureau:</strong> <span class="lang-en">Desmarais Building, Room 8104</span><span class="lang-fr">Pavillon Desmarais, pièce 8104</span></p>
+                <p><strong><span class="lang-en">Address</span><span class="lang-fr">Adresse</span>:</strong> <span class="lang-en">Department of Philosophy, University of Ottawa</span><span class="lang-fr">Département de philosophie, Université d'Ottawa</span><br>
+                55 Laurier Ave. East, Ottawa, ON K1N 6N5</p>
+                <p><strong><span class="lang-en">Profiles</span><span class="lang-fr">Profils</span>:</strong> <a href="https://uniweb.uottawa.ca/view/profile/members/6799" target="_blank">uOttawa</a> · <a href="https://philpeople.org/profiles/etienne-brown" target="_blank">PhilPeople</a> · <a href="https://philmod.org" target="_blank">PhilMod</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Étienne Brown
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('lang');
+            const newLang = currentLang === 'en' ? 'fr' : 'en';
+            html.setAttribute('lang', newLang);
+            
+            // Update page title
+            document.title = newLang === 'en' 
+                ? 'Étienne Brown — Philosophy' 
+                : 'Étienne Brown — Philosophie';
+            
+            // Save preference
+            localStorage.setItem('preferredLang', newLang);
+        }
+
+        // Load saved language preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang) {
+                document.documentElement.setAttribute('lang', savedLang);
+                document.title = savedLang === 'en' 
+                    ? 'Étienne Brown — Philosophy' 
+                    : 'Étienne Brown — Philosophie';
+            }
+        });
+    </script>
+</body>
+</html>
