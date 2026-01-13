@@ -6,6 +6,22 @@
     <title>Étienne Brown — Philosophy</title>
     <meta name="description" content="Étienne Brown is an Associate Professor of Philosophy at the University of Ottawa, specializing in political philosophy, ethics, and the philosophy of technology.">
     
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://etiennebrown.com/">
+    <meta property="og:title" content="Étienne Brown — Philosophy">
+    <meta property="og:description" content="Associate Professor of Philosophy at the University of Ottawa. Research on political philosophy, ethics, and the philosophy of technology.">
+    <meta property="og:locale" content="en_CA">
+    <meta property="og:locale:alternate" content="fr_CA">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Étienne Brown — Philosophy">
+    <meta name="twitter:description" content="Associate Professor of Philosophy at the University of Ottawa. Research on political philosophy, ethics, and the philosophy of technology.">
+    
+    <!-- Favicon (simple SVG) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>É</text></svg>">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
@@ -88,18 +104,26 @@
             right: 0;
             font-family: var(--font-body);
             font-size: 0.85rem;
+            font-weight: 500;
             background: transparent;
             border: 1px solid var(--color-border);
-            padding: 0.3rem 0.7rem;
+            padding: 0.35rem 0.75rem;
             cursor: pointer;
             color: var(--color-muted);
-            transition: all 0.2s ease;
-            border-radius: 2px;
+            transition: all 0.25s ease;
+            border-radius: 3px;
+            letter-spacing: 0.05em;
         }
 
         .lang-toggle:hover {
             border-color: var(--color-accent);
             color: var(--color-accent);
+            background: rgba(139, 69, 19, 0.05);
+            transform: translateY(-1px);
+        }
+
+        .lang-toggle:active {
+            transform: translateY(0);
         }
 
         /* Main content */
@@ -148,6 +172,26 @@
 
         .bio a:hover {
             border-bottom-color: var(--color-accent);
+        }
+
+        /* CV Link */
+        .cv-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-border);
+            transition: border-color 0.2s ease;
+        }
+
+        .cv-link:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .cv-link::before {
+            content: '↓ ';
         }
 
         /* Section headings */
@@ -257,6 +301,26 @@
             border-bottom-color: var(--color-accent);
         }
 
+        /* Back to top */
+        .back-to-top {
+            display: block;
+            text-align: center;
+            margin-top: 3rem;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--color-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .back-to-top:hover {
+            color: var(--color-accent);
+        }
+
+        .back-to-top::before {
+            content: '↑ ';
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -321,7 +385,7 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav id="top">
         <div class="nav-container">
             <ul>
                 <li><a href="#about"><span class="lang-en">About</span><span class="lang-fr">À propos</span></a></li>
@@ -329,7 +393,7 @@
                 <li><a href="#teaching"><span class="lang-en">Teaching</span><span class="lang-fr">Enseignement</span></a></li>
                 <li><a href="#contact"><span class="lang-en">Contact</span><span class="lang-fr">Contact</span></a></li>
             </ul>
-            <button class="lang-toggle" onclick="toggleLanguage()">
+            <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language">
                 <span class="lang-en">FR</span><span class="lang-fr">EN</span>
             </button>
         </div>
@@ -360,6 +424,9 @@
             <p class="bio lang-fr">
                 J'ai obtenu mon doctorat à l'Université Paris-Sorbonne et j'ai effectué des stages postdoctoraux à l'Oxford Uehiro Centre for Practical Ethics et au Centre de recherche en éthique de l'Université de Montréal. Avant de rejoindre l'Université d'Ottawa, j'étais professeur agrégé à la San José State University, en Californie.
             </p>
+            <a href="https://uniweb.uottawa.ca/view/profile/members/6799" target="_blank" class="cv-link">
+                <span class="lang-en">Download CV</span><span class="lang-fr">Télécharger le CV</span>
+            </a>
         </section>
 
         <section id="publications">
@@ -520,6 +587,10 @@
                 55 Laurier Ave. East, Ottawa, ON K1N 6N5</p>
                 <p><strong><span class="lang-en">Profiles</span><span class="lang-fr">Profils</span>:</strong> <a href="https://uniweb.uottawa.ca/view/profile/members/6799" target="_blank">uOttawa</a> · <a href="https://philpeople.org/profiles/etienne-brown" target="_blank">PhilPeople</a> · <a href="https://philmod.org" target="_blank">PhilMod</a></p>
             </div>
+            
+            <a href="#top" class="back-to-top">
+                <span class="lang-en">Back to top</span><span class="lang-fr">Retour en haut</span>
+            </a>
         </section>
     </main>
 
