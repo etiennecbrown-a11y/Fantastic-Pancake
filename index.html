@@ -861,4 +861,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferredLang');
             if (savedLang) {
-              
+                document.documentElement.setAttribute('lang', savedLang);
+                document.title = savedLang === 'en' 
+                    ? 'Étienne Brown — Philosophy' 
+                    : 'Étienne Brown — Philosophie';
+            }
+        });
+    </script>
+</body>
+</html>
